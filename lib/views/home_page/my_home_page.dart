@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_xtendly/utils/helpers.dart';
 import 'package:flutter_xtendly/views/home_page/widgets/catergory_section.dart';
 import 'package:flutter_xtendly/views/home_page/widgets/page_hero.dart';
+import 'package:flutter_xtendly/views/home_page/widgets/sale_section.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -41,10 +42,7 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
               verticalSpace(16),
-              Container(
-                height: 60,
-                color: Colors.white,
-              )
+             const SaleSection()
             ],
           ),
       ),
