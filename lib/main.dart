@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: _buildTheme(Brightness.light),
       home: const MyHomePage(),
     );
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
     var baseTheme = ThemeData(brightness: brightness);
 
     return baseTheme.copyWith(
-      textTheme: GoogleFonts.latoTextTheme(baseTheme.textTheme),
+      textTheme: GoogleFonts.interTextTheme(baseTheme.textTheme),
       useMaterial3: true,
     );
   }
