@@ -11,14 +11,13 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width ?? 218,
-      height: height ?? 57,
+      height: height ?? 51,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50)
       ),
       child: ElevatedButton(
           onPressed: null,
           style: ButtonStyle(
-              shape: MaterialStateProperty.all(StadiumBorder()),
               backgroundColor: MaterialStateProperty.all(color ?? Colors.white)),
           child: Text(
             label,

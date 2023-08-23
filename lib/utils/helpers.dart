@@ -26,6 +26,10 @@ SizedBox verticalSpaceLarge = const SizedBox(
   height: 16,
 );
 
+SizedBox verticalSpace(double height) => SizedBox(
+      height: height,
+    );
+
 SizedBox horizontalSpaceTiny = const SizedBox(
   width: 4,
 );
