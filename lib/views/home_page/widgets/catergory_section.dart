@@ -12,37 +12,35 @@ class CategorySection extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(66, 96, 66, 96),
       decoration: const BoxDecoration(color: Color(0xffEBEAE8)),
       child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _image(AssetImages.product_5, "Sweatshirts"),
-              _image(AssetImages.product_3, "Hoodies"),
-              _image(AssetImages.product_5, "Pair"),
-            ],
-          ),
-          verticalSpace(66),
-          const Text("""Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          children: [
+            Wrap(
+              alignment: WrapAlignment.center,
+              children: [
+                _image(AssetImages.product_5, "Sweatshirts", context),
+                _image(AssetImages.product_3, "Hoodies", context),
+                _image(AssetImages.product_5, "Pair", context),
+              ],
+            ),
+            verticalSpace(66),
+        MediaQuery.sizeOf(context).width >tabletWidth ? const Text(
+              """Lorem ipsum dolor sit amet, consectetur adipiscing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco 
           laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
           in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
           deserunt mollit anim id est laborum.""",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20
-          ),)
-        ],
-      ),
-    );
+              textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            ) : Container()
+          ],
+        ));
   }
 
-  _image(String path, String label) {
+  _image(String path, String label, BuildContext context) {
     return Container(
-      width: 410,
-      height: 600,
+      width: currentWidth(context) > tabletWidth ? 410 : 204,
+      height: currentWidth(context) > tabletWidth ? 600 : 300,
       alignment: Alignment.bottomCenter,
       padding: const EdgeInsets.only(bottom: 24),
       decoration: BoxDecoration(
@@ -51,6 +49,8 @@ class CategorySection extends StatelessWidget {
       child: MyButton(
         color: const Color(0xffE4E4E4),
         label: label,
+        width: currentWidth(context) > tabletWidth ? null : 132,
+        height: currentWidth(context) > tabletWidth ? null : 25,
       )
     );
   }

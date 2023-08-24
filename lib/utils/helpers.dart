@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
 double deviceWidth = 1440;
+double tabletWidth = 750;
+
+currentWidth(BuildContext context) => MediaQuery.sizeOf(context).width;
 
 deviceHeight(BuildContext context) => MediaQuery.sizeOf(context).height;
 

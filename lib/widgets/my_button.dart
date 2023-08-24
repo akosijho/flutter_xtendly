@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_xtendly/utils/helpers.dart';
 
 class MyButton extends StatelessWidget {
   const MyButton({super.key, required this.label, this.height, this.width, this.color, this.boxDecoration});
@@ -20,7 +21,10 @@ class MyButton extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all(color ?? Colors.white)),
           child: Text(
             label,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.black),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: currentWidth(context) > tabletWidth ? 24 : 16,
+                color: Colors.black),
           )),
     );
   }

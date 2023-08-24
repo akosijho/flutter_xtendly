@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_xtendly/utils/helpers.dart';
 import 'package:flutter_xtendly/views/home_page/widgets/catergory_section.dart';
+import 'package:flutter_xtendly/views/home_page/widgets/footer.dart';
 import 'package:flutter_xtendly/views/home_page/widgets/page_hero.dart';
 import 'package:flutter_xtendly/views/home_page/widgets/sale_section.dart';
 
@@ -20,8 +21,9 @@ class MyHomePage extends StatelessWidget {
               const PageHero(),
               const CategorySection(),
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 240),
-                decoration: BoxDecoration(color: Colors.white,
+                padding: EdgeInsets.symmetric(vertical: 24, horizontal: currentWidth(context) > 986 ? 240 : 16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.4),
@@ -32,17 +34,22 @@ class MyHomePage extends StatelessWidget {
                   ],
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment:
+                      currentWidth(context) > 986 ? MainAxisAlignment.spaceBetween : MainAxisAlignment.center,
                   children: List<Widget>.generate(
-                      4,
-                      (index) => const Text(
+                      currentWidth(context) > 986 ? 4 : 1,
+                      (index) => Text(
                             "SALE",
-                            style: TextStyle(fontSize: 50, fontWeight: FontWeight.w600, color: Color(0xffCF4242)),
+                            style: TextStyle(
+                                fontSize: currentWidth(context) > tabletWidth ? 50 : 32,
+                                fontWeight: FontWeight.w600,
+                                color: const Color(0xffCF4242)),
                           )),
                 ),
               ),
               verticalSpace(16),
-             const SaleSection()
+              const SaleSection(),
+              const Footer()
             ],
           ),
       ),

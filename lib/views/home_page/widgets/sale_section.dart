@@ -11,7 +11,7 @@ class SaleSection extends StatelessWidget {
     return Container(
       width: deviceWidth,
       color: Colors.white,
-      padding: const EdgeInsets.all(76),
+      padding: EdgeInsets.all(currentWidth(context) > tabletWidth ? 76 : 16),
       child: Column(
         children: [
           Wrap(
@@ -24,13 +24,13 @@ class SaleSection extends StatelessWidget {
                       children: [
                         Stack(
                           children: [
-                            const SizedBox(
-                              width: 316,
+                            SizedBox(
+                              width: currentWidth(context) > tabletWidth ? 316 : 156,
                             ),
                             Image.asset(
                               AssetImages.product_5,
-                              width: 272,
-                              height: 400,
+                              width: currentWidth(context) > tabletWidth ? 272 : 141,
+                              height: currentWidth(context) > tabletWidth ? 400 : 200,
                             ),
                             Positioned(
                                 top: 24,
@@ -39,21 +39,26 @@ class SaleSection extends StatelessWidget {
                                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                   alignment: Alignment.center,
                                   color: const Color(0xffE0CA9E),
-                                  child: const Text(
+                                  child: Text(
                                     "15% OFF",
-                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.white),
+                                    style: TextStyle(
+                                        fontSize: currentWidth(context) > tabletWidth ? 18 : 10,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
                                   ),
                                 ))
                           ],
                         ),
                         verticalSpaceMedium,
-                        const Text(
+                        Text(
                           "LOREM IPSUM",
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: currentWidth(context) > tabletWidth ? 18 : 15),
                         ),
-                        const Text(
+                        Text(
                           "Lorem ipsum",
-                          style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: currentWidth(context) > tabletWidth ? 18 : 12),
                         ),
                         verticalSpace(48)
                       ],
