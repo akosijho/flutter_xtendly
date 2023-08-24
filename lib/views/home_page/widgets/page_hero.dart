@@ -27,7 +27,9 @@ class PageHero extends StatelessWidget {
                 Positioned(
                     top: 16,
                     child: SizedBox(
-                      width: MediaQuery.sizeOf(context).width,
+                      width: MediaQuery.sizeOf(context).width > deviceWidth
+                          ? deviceWidth
+                          : MediaQuery.sizeOf(context).width,
                       child: const Column(
                         children: [
                           MyNavbar(),
@@ -86,7 +88,7 @@ class PageHero extends StatelessWidget {
                   height: 812,
                 ),
                 Positioned(
-                    top: 0,
+                    top: 16,
                     child: SizedBox(
                       width: MediaQuery.sizeOf(context).width,
                       child: Column(

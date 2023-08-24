@@ -12,4 +12,5 @@ class AssetImages {
   static const product_5 = "$_rootPath/866885169173291b165b8f0c4e1ca0a1.png";
   static const contact = "$_rootPath/contact.png";
   static const social = "$_rootPath/social.png";
+  static const hamburger = "$_rootPath/hamburger.svg";
 }
