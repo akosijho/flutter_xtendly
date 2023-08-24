@@ -16,7 +16,7 @@ class HeaderTabsText extends StatelessWidget {
           label,
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        horizontalSpaceLarge,
+        currentWidth(context) < 1200 ? horizontalSpaceMedium : horizontalSpaceLarge,
       ],
     );
   }
