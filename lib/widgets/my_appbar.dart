@@ -12,6 +12,7 @@ class MyNavbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.sizeOf(context).width,
       padding: EdgeInsets.symmetric(horizontal: currentWidth(context) < tabletWidth ? 16 : 40, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -25,84 +26,88 @@ class MyNavbar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       child: currentWidth(context) > 950
-          ? Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffD9D9D9)),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    "LOGO",
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+          ? SizedBox(
+              width: deviceWidth,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffD9D9D9)),
+                    alignment: Alignment.center,
+                    child: const Text(
+                      "LOGO",
+                      style: TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+                    ),
                   ),
-                ),
-                Expanded(child: Container()),
-                ...headerTab.map((e) => HeaderTabsText(label: e)),
-                Expanded(child: Container()),
-                SizedBox(
-                  width: 194,
-                  height: 30,
-                  child: TextField(
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(
-                        hintText: 'Search',
-                        hintStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
-                        contentPadding: const EdgeInsets.all(15),
-                        fillColor: const Color(0xffE4E4E4),
-                        hoverColor: Colors.transparent,
-                        filled: true,
-                        focusColor: Colors.transparent,
-                        prefixIcon: const Icon(
-                          Icons.search_rounded,
+                  Expanded(child: Container()),
+                  Expanded(child: Container()),
+                  ...headerTab.map((e) => HeaderTabsText(label: e)),
+                  Expanded(child: Container()),
+                  SizedBox(
+                    width: 194,
+                    height: 30,
+                    child: TextField(
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                          hintText: 'Search',
+                          hintStyle: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
+                          contentPadding: const EdgeInsets.all(15),
+                          fillColor: const Color(0xffE4E4E4),
+                          hoverColor: Colors.transparent,
+                          filled: true,
+                          focusColor: Colors.transparent,
+                          prefixIcon: const Icon(
+                            Icons.search_rounded,
+                          ),
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(30))),
+                    ),
+                  ),
+                  horizontalSpace(24),
+                  SizedBox(
+                    width: 26,
+                    height: 30,
+                    child: Stack(
+                      children: [
+                        SvgPicture.asset(
+                          AssetImages.bag,
+                          width: 21,
+                          height: 25,
                         ),
-                        border:
-                            OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(30))),
+                        Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: 12,
+                              height: 12,
+                              decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffD9D9D9)),
+                              child: Text(
+                                "0",
+                                style: TextStyle(
+                                    fontSize: 8, fontWeight: FontWeight.w500, color: Colors.black.withOpacity(0.47)),
+                              ),
+                            ))
+                      ],
+                    ),
                   ),
-                ),
-                horizontalSpace(24),
-                SizedBox(
-                  width: 26,
-            height: 30,
-            child: Stack(
-              children: [
-                SvgPicture.asset(
-                  AssetImages.bag,
-                  width: 21,
-                  height: 25,
-                ),
-                Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Container(
-                      alignment: Alignment.center,
-                            width: 12,
-                            height: 12,
-                            decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffD9D9D9)),
-                            child: Text(
-                              "0",
-                              style: TextStyle(
-                                  fontSize: 8, fontWeight: FontWeight.w500, color: Colors.black.withOpacity(0.47)),
-                            ),
-                          ))
-                    ],
-                  ),
-                ),
-                horizontalSpaceBig,
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: SvgPicture.asset(
-                    AssetImages.star,
-                    width: 28,
-                    height: 28,
-                  ),
-                )
-              ],
+                  horizontalSpaceBig,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: SvgPicture.asset(
+                      AssetImages.star,
+                      width: 28,
+                      height: 28,
+                    ),
+                  )
+                ],
+              ),
             )
           : Row(
-        mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SvgPicture.asset(AssetImages.hamburger),
@@ -114,53 +119,53 @@ class MyNavbar extends StatelessWidget implements PreferredSizeWidget {
                     decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffD9D9D9)),
                     alignment: Alignment.center,
                     child: const Text(
-                      "LOGO",
-                      style: TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 26,
-                      height: 30,
-                      child: Stack(
-                        children: [
-                          SvgPicture.asset(
-                            AssetImages.bag,
-                            width: 21,
-                            height: 25,
-                          ),
-                          Positioned(
-                              bottom: 0,
-                              right: 0,
-                              child: Container(
-                                alignment: Alignment.center,
-                                width: 12,
-                                height: 12,
-                                decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffD9D9D9)),
-                                child: Text(
-                                  "0",
-                                  style: TextStyle(
-                                      fontSize: 8, fontWeight: FontWeight.w500, color: Colors.black.withOpacity(0.47)),
-                                ),
-                              ))
-                        ],
-                      ),
-                    ),
-                    horizontalSpaceBig,
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: SvgPicture.asset(
-                        AssetImages.star,
-                        width: 28,
-                        height: 28,
-                      ),
-                    )
-                  ],
-                )
-              ],
+                "LOGO",
+                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+              ),
             ),
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 26,
+                height: 30,
+                child: Stack(
+                  children: [
+                    SvgPicture.asset(
+                      AssetImages.bag,
+                      width: 21,
+                      height: 25,
+                    ),
+                    Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: 12,
+                          height: 12,
+                          decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffD9D9D9)),
+                          child: Text(
+                            "0",
+                            style: TextStyle(
+                                fontSize: 8, fontWeight: FontWeight.w500, color: Colors.black.withOpacity(0.47)),
+                          ),
+                        ))
+                  ],
+                ),
+              ),
+              horizontalSpaceBig,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8.0),
+                child: SvgPicture.asset(
+                  AssetImages.star,
+                  width: 28,
+                  height: 28,
+                ),
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 

@@ -14,40 +14,46 @@ class MyHomePage extends StatelessWidget {
         body: Align(
           alignment: Alignment.topCenter,
           child: SizedBox(
-      width: deviceWidth,
+      width: MediaQuery.sizeOf(context).width,
             child: SingleChildScrollView(
           child: Column(
             children: [
               const PageHero(),
               const CategorySection(),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 24, horizontal: currentWidth(context) > 986 ? 240 : 16),
+                width: MediaQuery.sizeOf(context).width,
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.4),
-                      blurRadius: 1.0,
-                      spreadRadius: 0.0,
-                      offset: const Offset(0.0, 2.0), // shadow direction: bottom right
-                    )
-                  ],
-                ),
-                child: Row(
-                  mainAxisAlignment:
-                      currentWidth(context) > 986 ? MainAxisAlignment.spaceBetween : MainAxisAlignment.center,
-                  children: List<Widget>.generate(
-                      currentWidth(context) > 986 ? 4 : 1,
-                      (index) => Text(
-                            "SALE",
-                            style: TextStyle(
-                                fontSize: currentWidth(context) > tabletWidth ? 50 : 32,
-                                fontWeight: FontWeight.w600,
-                                color: const Color(0xffCF4242)),
-                          )),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.4),
+                    blurRadius: 1.0,
+                    spreadRadius: 0.0,
+                    offset: const Offset(0.0, 2.0), // shadow direction: bottom right
+                  )
+                ],
+              ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 24, horizontal: currentWidth(context) > 986 ? 240 : 16),
+                  child: IntrinsicWidth(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment:
+                          currentWidth(context) > 986 ? MainAxisAlignment.spaceAround : MainAxisAlignment.center,
+                      children: List<Widget>.generate(
+                          currentWidth(context) > 986 ? 4 : 1,
+                          (index) => Text(
+                                "SALE",
+                                style: TextStyle(
+                                    fontSize: currentWidth(context) > tabletWidth ? 50 : 32,
+                                    fontWeight: FontWeight.w600,
+                                    color: const Color(0xffCF4242)),
+                              )),
+                    ),
+                  ),
                 ),
               ),
-              verticalSpace(16),
+              // verticalSpace(16),
               const SaleSection(),
               const Footer()
             ],

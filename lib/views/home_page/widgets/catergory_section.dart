@@ -8,18 +8,21 @@ class CategorySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: deviceWidth,
+      width: MediaQuery.sizeOf(context).width,
       padding: const EdgeInsets.fromLTRB(66, 96, 66, 96),
       decoration: const BoxDecoration(color: Color(0xffEBEAE8)),
       child: Column(
           children: [
-            Wrap(
-              alignment: WrapAlignment.center,
-              children: [
-                _image(AssetImages.product_5, "Sweatshirts", context),
-                _image(AssetImages.product_3, "Hoodies", context),
-                _image(AssetImages.product_5, "Pair", context),
-              ],
+            SizedBox(
+              width: deviceWidth,
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                children: [
+                  _image(AssetImages.product_5, "Sweatshirts", context),
+                  _image(AssetImages.product_3, "Hoodies", context),
+                  _image(AssetImages.product_5, "Pair", context),
+                ],
+              ),
             ),
             verticalSpace(66),
         MediaQuery.sizeOf(context).width >tabletWidth ? const Text(
