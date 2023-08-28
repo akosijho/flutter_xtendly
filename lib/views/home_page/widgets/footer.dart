@@ -41,7 +41,7 @@ class Footer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       verticalSpaceMedium,
-                      _footerLabels("""Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      _footerLabels("""Lorem ipsum dolor sit amet, 
 sed do eiusmod tempor incididunt."""),
                       verticalSpaceLarge,
                       _footerLabels("""Lorem ipsum"""),
@@ -93,7 +93,8 @@ sed do eiusmod tempor incididunt."""),
     return Text(
       label,
       overflow: TextOverflow.clip,
-      style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 15, color: Color(0xff676767)),
+      style: const TextStyle(
+          fontWeight: FontWeight.w500, fontSize: 15, color: Color(0xff676767), overflow: TextOverflow.clip),
     );
   }
 

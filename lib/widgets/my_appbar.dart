@@ -106,14 +106,17 @@ class MyNavbar extends StatelessWidget implements PreferredSizeWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SvgPicture.asset(AssetImages.hamburger),
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffD9D9D9)),
+                Align(
                   alignment: Alignment.center,
-                  child: const Text(
-                    "LOGO",
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffD9D9D9)),
+                    alignment: Alignment.center,
+                    child: const Text(
+                      "LOGO",
+                      style: TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+                    ),
                   ),
                 ),
                 Row(
