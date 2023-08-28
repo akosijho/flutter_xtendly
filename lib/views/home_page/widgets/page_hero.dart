@@ -8,77 +8,80 @@ class PageHero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: deviceWidth,
+      width: MediaQuery.sizeOf(context).width,
       height: currentWidth(context) > tabletWidth ? 1024 : 812,
+      alignment: Alignment.center,
       child: currentWidth(context) > tabletWidth
-          ? Stack(
-              children: [
-                Image.asset(
-                  AssetImages.rectangle_2,
-                  fit: BoxFit.fill,
+          ? Stack(alignment: Alignment.topCenter, children: [
+              Image.asset(
+                AssetImages.rectangle_2,
+                fit: BoxFit.fill,
+                width: MediaQuery.sizeOf(context).width,
+                height: 1024,
+              ),
+              Positioned(
+                top: 0,
+                right: 0,
+                child: SizedBox(width: MediaQuery.sizeOf(context).width, child: const MiniNavbar()),
+              ),
+              const Positioned(
+                  top: 16,
+                  child: Column(
+                    children: [
+                      MyNavbar(),
+                    ],
+                  )),
+              Center(
+                child: SizedBox(
                   width: deviceWidth,
-                  height: 1024,
-                ),
-                Positioned(
-                  top: 0,
-                  right: 0,
-                  child: SizedBox(width: MediaQuery.sizeOf(context).width, child: const MiniNavbar()),
-                ),
-                Positioned(
-                    top: 16,
-                    child: SizedBox(
-                      width: MediaQuery.sizeOf(context).width > deviceWidth
-                          ? deviceWidth
-                          : MediaQuery.sizeOf(context).width,
-                      child: const Column(
-                        children: [
-                          MyNavbar(),
-                        ],
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 256,
+                        child: Image.asset(
+                          AssetImages.product_1,
+                          fit: BoxFit.fill,
+                          width: currentWidth(context) > tabletWidth && currentWidth(context) < 1200 ? 300 : 381,
+                        ),
                       ),
-                    )),
-                Positioned(
-                  left: 0,
-                  top: 256,
-                  child: Image.asset(
-                    AssetImages.product_1,
-                    fit: BoxFit.fill,
-                    width: currentWidth(context) > tabletWidth && currentWidth(context) < 1200 ? 300 : 381,
+                      Positioned(
+                        left: 716,
+                        top: 215,
+                        child: Image.asset(
+                          AssetImages.product_4,
+                          fit: BoxFit.fill,
+                          width: currentWidth(context) > tabletWidth && currentWidth(context) < 1200 ? 300 : 724,
+                        ),
+                      ),
+                      Positioned(
+                        left: 355,
+                        top: 289,
+                        child: Image.asset(
+                          AssetImages.product_2,
+                          fit: BoxFit.fill,
+                          width: currentWidth(context) > tabletWidth && currentWidth(context) < 1200 ? 300 : 387,
+                        ),
+                      ),
+                      if (currentWidth(context) > tabletWidth && currentWidth(context) > 1200)
+                        const Positioned(
+                            left: 611,
+                            top: 805,
+                            child: MyButton(
+                              label: "Shop Now",
+                            )),
+                      if (currentWidth(context) > tabletWidth && currentWidth(context) < 1200)
+                        const Align(
+                          alignment: Alignment.center,
+                          child: MyButton(
+                            label: "Shop Now",
+                          ),
+                        )
+                    ],
                   ),
                 ),
-                Positioned(
-                  left: 716,
-                  top: 215,
-                  child: Image.asset(
-                    AssetImages.product_4,
-                    fit: BoxFit.fill,
-                    width: currentWidth(context) > tabletWidth && currentWidth(context) < 1200 ? 300 : 724,
-                  ),
-                ),
-                Positioned(
-                  left: 355,
-                  top: 289,
-                  child: Image.asset(
-                    AssetImages.product_2,
-                    fit: BoxFit.fill,
-                    width: currentWidth(context) > tabletWidth && currentWidth(context) < 1200 ? 300 : 387,
-                  ),
-                ),
-                if (currentWidth(context) > tabletWidth && currentWidth(context) > 1200)
-                  const Positioned(
-                      left: 611,
-                      top: 805,
-                      child: MyButton(
-                        label: "Shop Now",
-                      )),
-                if (currentWidth(context) > tabletWidth && currentWidth(context) < 1200)
-                  const Align(
-                    alignment: Alignment.center,
-                    child: MyButton(
-                      label: "Shop Now",
-                    ),
-                  )
-              ],
-            )
+              )
+            ])
           : Stack(
               children: [
                 Image.asset(

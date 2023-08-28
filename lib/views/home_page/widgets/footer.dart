@@ -8,83 +8,88 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color(0xffEBEAE8),
-      padding: EdgeInsets.symmetric(horizontal: currentWidth(context) > tabletWidth ? 88 : 28, vertical: 40),
-      width: deviceWidth,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 130,
-                height: 130,
-                decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffD9D9D9)),
-                alignment: Alignment.center,
-                child: const Text(
-                  "LOGO",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
-                ),
-              ),
-              verticalSpace(32),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    AssetImages.contact,
-                    width: 41,
-                    height: 147,
+      width: MediaQuery.sizeOf(context).width,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: currentWidth(context) > tabletWidth ? 88 : 28, vertical: 40),
+        constraints: BoxConstraints(
+          maxWidth: deviceWidth
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 130,
+                  height: 130,
+                  decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffD9D9D9)),
+                  alignment: Alignment.center,
+                  child: const Text(
+                    "LOGO",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
                   ),
-                  horizontalSpaceMedium,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      verticalSpaceMedium,
-                      _footerLabels("""Lorem ipsum dolor sit amet, 
+                ),
+                verticalSpace(32),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      AssetImages.contact,
+                      width: 41,
+                      height: 147,
+                    ),
+                    horizontalSpaceMedium,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        verticalSpaceMedium,
+                        _footerLabels("""Lorem ipsum dolor sit amet, 
 sed do eiusmod tempor incididunt."""),
-                      verticalSpaceLarge,
-                      _footerLabels("""Lorem ipsum"""),
-                      verticalSpace(28),
-                      _footerLabels("""Lorem ipsum dolor sit amet"""),
-                    ],
-                  )
-                ],
-              ),
-              verticalSpaceMedium,
-              Image.asset(
-                AssetImages.social,
-                width: 214,
-                height: 64,
-              ),
-              verticalSpaceMedium,
-              if (currentWidth(context) < 970) ...[
-                const Text(
-                  "COLLECTION",
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                        verticalSpaceLarge,
+                        _footerLabels("""Lorem ipsum"""),
+                        verticalSpace(28),
+                        _footerLabels("""Lorem ipsum dolor sit amet"""),
+                      ],
+                    )
+                  ],
                 ),
                 verticalSpaceMedium,
-                const Text(
-                  "INFORMATION",
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                Image.asset(
+                  AssetImages.social,
+                  width: 214,
+                  height: 64,
                 ),
                 verticalSpaceMedium,
-                const Text(
-                  'MORE',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-                ),
-              ]
-            ],
-          ),
-          if (currentWidth(context) > 970) ...[
-            _footerItems("COLLECTION"),
-            _footerItems("INFORMATION"),
-            _footerItems("MORE"),
-          ]
-        ],
+                if (currentWidth(context) < 970) ...[
+                  const Text(
+                    "COLLECTION",
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                  ),
+                  verticalSpaceMedium,
+                  const Text(
+                    "INFORMATION",
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                  ),
+                  verticalSpaceMedium,
+                  const Text(
+                    'MORE',
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                  ),
+                ]
+              ],
+            ),
+            if (currentWidth(context) > 970) ...[
+              _footerItems("COLLECTION"),
+              _footerItems("INFORMATION"),
+              _footerItems("MORE"),
+            ]
+          ],
+        ),
       ),
     );
   }

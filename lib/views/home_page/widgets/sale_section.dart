@@ -9,60 +9,65 @@ class SaleSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: deviceWidth,
+      width: MediaQuery.sizeOf(context).width,
       color: Colors.white,
       padding: EdgeInsets.all(currentWidth(context) > tabletWidth ? 76 : 16),
       child: Column(
         children: [
-          Wrap(
-            alignment: WrapAlignment.spaceBetween,
-            runAlignment: WrapAlignment.spaceBetween,
-            children: List<Widget>.generate(
-                8,
-                (index) => Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Stack(
+          SizedBox(
+            width: deviceWidth,
+            child: Center(
+              child: Wrap(
+                alignment: WrapAlignment.start,
+                runAlignment: WrapAlignment.spaceBetween,
+                children: List<Widget>.generate(
+                    8,
+                    (index) => Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
-                              width: currentWidth(context) > tabletWidth ? 316 : 156,
+                            Stack(
+                              children: [
+                                SizedBox(
+                                  width: currentWidth(context) > tabletWidth ? 316 : 156,
+                                ),
+                                Image.asset(
+                                  AssetImages.product_5,
+                                  width: currentWidth(context) > tabletWidth ? 272 : 141,
+                                  height: currentWidth(context) > tabletWidth ? 400 : 200,
+                                ),
+                                Positioned(
+                                    top: 24,
+                                    right: 0,
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                      alignment: Alignment.center,
+                                      color: const Color(0xffE0CA9E),
+                                      child: Text(
+                                        "15% OFF",
+                                        style: TextStyle(
+                                            fontSize: currentWidth(context) > tabletWidth ? 18 : 10,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white),
+                                      ),
+                                    ))
+                              ],
                             ),
-                            Image.asset(
-                              AssetImages.product_5,
-                              width: currentWidth(context) > tabletWidth ? 272 : 141,
-                              height: currentWidth(context) > tabletWidth ? 400 : 200,
+                            verticalSpaceMedium,
+                            Text(
+                              "LOREM IPSUM",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: currentWidth(context) > tabletWidth ? 18 : 15),
                             ),
-                            Positioned(
-                                top: 24,
-                                right: 0,
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                  alignment: Alignment.center,
-                                  color: const Color(0xffE0CA9E),
-                                  child: Text(
-                                    "15% OFF",
-                                    style: TextStyle(
-                                        fontSize: currentWidth(context) > tabletWidth ? 18 : 10,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.white),
-                                  ),
-                                ))
+                            Text(
+                              "Lorem ipsum",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400, fontSize: currentWidth(context) > tabletWidth ? 18 : 12),
+                            ),
+                            verticalSpace(48)
                           ],
-                        ),
-                        verticalSpaceMedium,
-                        Text(
-                          "LOREM IPSUM",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: currentWidth(context) > tabletWidth ? 18 : 15),
-                        ),
-                        Text(
-                          "Lorem ipsum",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w400, fontSize: currentWidth(context) > tabletWidth ? 18 : 12),
-                        ),
-                        verticalSpace(48)
-                      ],
-                    )),
+                        )),
+              ),
+            ),
           ),
           verticalSpace(24),
           MyButton(label: "More",
